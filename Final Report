@@ -1,0 +1,14 @@
+Pokemon Name	Trainer Name	Level	Primary Type	Secondary Type
+Pokemon's name	Trainer's name	Current Level	Primary Type Name	Secondary Type Name
+
+SELECT pokemons.name AS PokemonName,
+trainers.trainername AS TrainerName,
+pt.name AS primary_type,
+st.name AS secondary_type,
+pokemon_trainer.pokelevel AS Level
+FROM pokemons
+JOIN pokemon_trainer ON pokemons.id=pokemon_trainer.pokemon_id
+JOIN trainers ON trainers.trainerID=pokemon_trainer.trainerID
+JOIN types pt ON pt.id=pokemons.primary_type
+JOIN types st ON st.id=pokemons.primary_type
+ORDER BY Level DESC;
